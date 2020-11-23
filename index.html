@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
     <title>Weather Outlook</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+    <section>
+        <div class="search-field">
+            <div class="search-bar">
+                <form>
+                    <label for="city">Search for a City:</label>
+                    <br>
+                    <input type="text" id="city" name="city">
+                    <button type="button" class="btn btn-outline-info">Search</button>
+                </form>
+            </div>
+            <div class="city-list"></div>
+        </div>
+        <div class="weather-display">
+            <div class="weather-info">
+                <h4>City</h4>
+                <h4>Temp</h4>
+                <h4>Humidity</h4>
+                <h4>wind Speed</h4>
+                <h4>UV Index</h4>
+            </div>
+
+            <div class="weather-imgs">
+                <h2>5-Day Forecast</h2>
+                <div class="weather-imgs-content">
+                    <h4>sunny</h4>
+                    <h4>rainy</h4>
+                    <h4>sunny</h4>
+                    <h4>rainy</h4>
+                    <h4>sunny</h4>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </body>
+
 </html>
