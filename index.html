@@ -26,33 +26,93 @@
                     <label for="city">Search for a City:</label>
                     <br>
                     <input type="text" id="city" name="city">
-                    <button type="button" class="btn btn-outline-info">Search</button>
+                    <button type="button" id="search-button" class="btn btn-outline-info">Search</button>
                 </form>
             </div>
             <div class="city-list"></div>
         </div>
         <div class="weather-display">
             <div class="weather-info">
-                <h4>City</h4>
-                <h4>Temp</h4>
-                <h4>Humidity</h4>
-                <h4>wind Speed</h4>
-                <h4>UV Index</h4>
+                <ul class="cityList">
+
+                </ul>
             </div>
 
             <div class="weather-imgs">
                 <h2>5-Day Forecast</h2>
-                <div class="weather-imgs-content">
-                    <h4>sunny</h4>
-                    <h4>rainy</h4>
-                    <h4>sunny</h4>
-                    <h4>rainy</h4>
-                    <h4>sunny</h4>
-                </div>
+                <div class="weather-imgs-content"></div>
             </div>
         </div>
-
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var queryURLBase = "http://api.openweathermap.org/data/2.5/forecast?q=";
+        var imperialUnits = "&units=imperial";
+        var apiKey = "&appid=086828ce404d02fbf057835f64951922";
+
+        var userCity = "";
+
+        //ajax request to get info
+        function runQuery(queryURL) {
+
+            $(".weather-info").empty();
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).done(function (weatherData) {
+
+                //add to html
+                var weatherInfoSection = $("<div>");
+                weatherInfoSection.addClass("weather");
+                $(".weather-info").append(weatherInfoSection);
+
+                var cityItem = $("<li>");
+                cityItem.addClass("city");
+                $(".city-list").append(cityItem);
+
+                var weatherDataDate = weatherData.list[0].dt_txt.toString().slice(0, 10);
+
+                $(".city").append("<h2>" + weatherData.city.name + "</h2>");
+                $(".weather").append("<h3>" + weatherData.city.name + " " + weatherDataDate + "</h3>");
+                $(".weather").append("<h5>" + "Temperature: " + weatherData.list[0].main.temp + "F" + "</h5>");
+                $(".weather").append("<h5>" + "Humidity: " + weatherData.list[0].main.humidity + "%" + "</h5>");
+                $(".weather").append("<h5>" + "Wind Speed " + weatherData.list[0].wind.speed + " MPH" + "</h5>");
+
+                // for (var i = 1; i < 35; i + 8) {
+                //     var dailyWeather = $("<div>");
+                //     dailyWeather.addClass("weatherslot")
+                //     dailyWeather.attr("id", "slot-" + i);
+                //     $(".weather-imgs-content").append(dailyWeather);
+
+                //     var littleWeatherDate = weatherData.list[i].dt_txt.toString().slice(0, 10);
+
+                //     $("#slot-" + i).append("<h6>" + littleWeatherDate + "</h6>");
+                //     $("#slot-" + i).append("<h6>" + "Temperature: " + weatherData.list[i].main.temp + "F" + "</h6>");
+                //     $("#slot-" + i).append("<h6>" + "Humidity: " + weatherData.list[i].main.humidity + "%" + "</h6>");
+
+                // }
+
+            });
+
+        }
+
+
+        //onclick event for search button
+        $('#search-button').on("click", function () {
+
+            var userCity = $("#city").val().trim();
+
+            var newUrl = queryURLBase + userCity + imperialUnits + apiKey;
+
+            runQuery(newUrl);
+            return false;
+        });
+
+
+
+    </script>
 </body>
 
 </html>
