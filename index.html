@@ -9,6 +9,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
@@ -26,7 +28,8 @@
                     <label for="city">Search for a City:</label>
                     <br>
                     <input type="text" id="city" name="city">
-                    <button type="button" id="search-button" class="btn btn-outline-info">Search</button>
+                    <button type="button" id="search-button" class="btn btn-outline-info"><i class="fas fa-search"></i>
+                    </button>
                 </form>
             </div>
             <div class="city-list"></div>
@@ -34,10 +37,8 @@
         <div class="weather-display">
             <div class="weather-info">
                 <ul class="cityList">
-
                 </ul>
             </div>
-
             <div class="weather-imgs">
                 <h2>5-Day Forecast</h2>
                 <div class="weather-imgs-content"></div>
@@ -57,6 +58,7 @@
         function runQuery(queryURL) {
 
             $(".weather-info").empty();
+            $(".weather-imgs-content").empty();
 
             $.ajax({
                 url: queryURL,
@@ -80,19 +82,21 @@
                 $(".weather").append("<h5>" + "Humidity: " + weatherData.list[0].main.humidity + "%" + "</h5>");
                 $(".weather").append("<h5>" + "Wind Speed " + weatherData.list[0].wind.speed + " MPH" + "</h5>");
 
-                // for (var i = 1; i < 35; i + 8) {
-                //     var dailyWeather = $("<div>");
-                //     dailyWeather.addClass("weatherslot")
-                //     dailyWeather.attr("id", "slot-" + i);
-                //     $(".weather-imgs-content").append(dailyWeather);
+                for (var i = 1; i < 35; i += 8) {
+                    var dailyWeather = $("<div>");
+                    dailyWeather.addClass("weatherslot")
+                    dailyWeather.attr("id", "slot-" + i);
+                    $(".weather-imgs-content").append(dailyWeather);
 
-                //     var littleWeatherDate = weatherData.list[i].dt_txt.toString().slice(0, 10);
+                    var littleWeatherDate = weatherData.list[i].dt_txt.toString().slice(0, 10);
+                    var weatherIcon = "http://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png";
 
-                //     $("#slot-" + i).append("<h6>" + littleWeatherDate + "</h6>");
-                //     $("#slot-" + i).append("<h6>" + "Temperature: " + weatherData.list[i].main.temp + "F" + "</h6>");
-                //     $("#slot-" + i).append("<h6>" + "Humidity: " + weatherData.list[i].main.humidity + "%" + "</h6>");
+                    $("#slot-" + i).append("<h6>" + littleWeatherDate + "</h6>");
+                    $("#slot-" + i).append("<img src=" + weatherIcon + ">");
+                    $("#slot-" + i).append("<h6>" + "Temperature: " + weatherData.list[i].main.temp + "F" + "</h6>");
+                    $("#slot-" + i).append("<h6>" + "Humidity: " + weatherData.list[i].main.humidity + "%" + "</h6>");
 
-                // }
+                }
 
             });
 
