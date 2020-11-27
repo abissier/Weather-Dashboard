@@ -11,12 +11,12 @@ header {
 header h1 {
  font-family: 'Prata', serif;
  color: #FFFFFF;
-font-size: 70px;
+ font-size: 70px;
 }
 
 body {
  background: rgb(34,193,195);
- background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+ background: linear-gradient(0deg, rgba(34,193,195,1) 50%, rgba(253,187,45,1) 100%);
 }
 
 section {
@@ -30,7 +30,7 @@ section {
 .search-field {
  display: flex;
  flex-direction: column;
- height: 70%;
+ height: 60%;
  width: 20%;
  background-color: white;
  opacity: 0.8;
@@ -40,8 +40,9 @@ section {
  box-shadow: 0px 0px 7px rgb(206, 206, 206);
 }
 
-form {
- font-family: 'Old Standard TT', serif;
+.search-bar {
+ padding: 20px;
+ font-family: 'Roboto Condensed', sans-serif;
 }
 
 input,
@@ -61,6 +62,12 @@ input,
 .city-list {
  font-family: 'Prata', serif;
  list-style: none;
+ padding: 20px;
+}
+
+button.city:hover {
+ transition: all .2s ease-in-out;
+ transform: scale(1.2);
 }
 
 .weather-display {
@@ -82,9 +89,8 @@ input,
 }
 
 .weather {
- padding: 20px;
- margin: 20px;
- font-family: 'Old Standard TT', serif;
+ padding: 10px;
+ font-family: 'Roboto Condensed', sans-serif;
 }
 
 .weather-imgs {
@@ -96,20 +102,27 @@ input,
  opacity: 0.8;
  border-radius: 5px;
  box-shadow: 0px 0px 7px rgb(206, 206, 206);
- font-family: 'Old Standard TT', serif;
+ font-family: 'Roboto Condensed', sans-serif;
+ padding: 10px;
 }
 
 .weather-imgs-content {
  display: flex;
  flex-direction: row;
  justify-content: space-around;
- align-items: stretch;
+ height: 60%;
 }
 
 .weatherslot {
  background: rgb(34,193,195);
- background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
  border-radius: 5px;
  box-shadow: 0px 0px 5px rgb(206, 206, 206);
  font-family: 'Prata', serif;
+ padding: 20px;
 }
+
+.weatherslot:hover{
+ transition: all .2s ease-in-out;
+ transform: scale(1.1);
+}
+
