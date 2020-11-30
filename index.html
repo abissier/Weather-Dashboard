@@ -36,11 +36,9 @@
                 </form>
             </div>
             <div class="city-list"></div>
-            <div class="saved-city"></div>
         </div>
         <div class="weather-display">
             <div class="weather-info">
-                <ul class="cityList"></ul>
             </div>
             <div class="weather-imgs">
                 <h2>5-Day Forecast</h2>
@@ -56,8 +54,9 @@
         var apiKey = "&appid=086828ce404d02fbf057835f64951922";
         var lat = "";
         var lon = "";
-
         var userCity = "";
+        var btnCity = "";
+        var previousSearch = [];
 
         //ajax request to get info
         function runQuery(queryURL) {
@@ -77,10 +76,15 @@
                 weatherInfoSection.addClass("weather");
                 $(".weather-info").append(weatherInfoSection);
 
-                //add to html city-list class
-                var cityItem = $("<button>");
-                cityItem.addClass("city");
-                $(".city-list").append(cityItem);
+                //check if previous search array does not include user city 
+                if (!previousSearch.includes(userCity)) {
+                    //if true then add to html city-list class
+                    var cityItem = $("<button>");
+                    cityItem.addClass("city");
+                    $(".city-list").append(cityItem);
+                    previousSearch.push(userCity);
+                    cityItem.append("<h2>" + weatherData.city.name + "</h2>");
+                }
 
                 //delete extra content from the date gathered from api
                 var weatherDataDate = weatherData.list[0].dt_txt.toString().slice(0, 10);
@@ -88,7 +92,6 @@
                 var cityWeatherIcon = "<img src=http://openweathermap.org/img/w/" + weatherData.list[0].weather[0].icon + ".png>";
 
                 //append wanted data from api to html
-                $(".city").append("<h2>" + weatherData.city.name + "</h2>");
                 $(".weather").append("<h2>" + weatherData.city.name + " " + weatherDataDate + cityWeatherIcon + "</h2>");
                 $(".weather").append("<h5>" + "Temperature: " + weatherData.list[0].main.temp + "&deg;F" + "</h5>");
                 $(".weather").append("<h5>" + "Humidity: " + weatherData.list[0].main.humidity + "%" + "</h5>");
@@ -117,7 +120,7 @@
                 lat = weatherData.city.coord.lat;
                 lon = weatherData.city.coord.lon;
 
-            //then run new api call to get uv info w previous functions lat and lon
+                //then run new api call to get uv info w previous functions lat and lon
             }).then(function (weatherUV) {
 
                 $.ajax({
@@ -126,15 +129,24 @@
 
                 }).done(function (weatherUV) {
 
-                    $(".weather").append("<h5>" + "UV Index: " + weatherUV.value + "</h5>");
+                    $(".weather").append("<h5 class='uv'>" + "UV Index: <span>" + weatherUV.value + "</span></h5>");
+
+                    var uvIndex = parseInt(weatherUV.value, 10);
+
+                    if (uvIndex <= 2) {
+                        $(".uv").addClass("favorable");
+                    } else if (uvIndex >= 3 && uvIndex <= 5) {
+                        $(".uv").addClass("moderate");
+                    } else {
+                        $(".uv").addClass("severe");
+                    }
                 })
 
             })
         };
 
         //onclick event for search button
-        $('#search-button').on("click", function () {
-
+        $('#search-button').on("click", function (event) {
             userCity = $("#city").val().trim();
 
             var newUrl = queryURLBase + userCity + imperialUnits + apiKey;
@@ -144,18 +156,16 @@
             return false;
         });
 
-        //onclick event for city list item
-        // $('button.city').on("click", function () {
-        //     var previousCity = $(".city").val();
+        //onclick event for previous city search 
+        $(".city-list").on("click", function (event) {
+            btnCity = event.target.innerText;
 
-        //     var newUrl = queryURLBase + previousCity + imperialUnits + apiKey;
+            var newUrl = queryURLBase + btnCity + imperialUnits + apiKey;
 
-        //     runQuery(newUrl);
-        //     return false;
-        // });
-
-
-
+            // run query w new url
+            runQuery(newUrl);
+            return false;
+        })
 
     </script>
 </body>

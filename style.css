@@ -11,6 +11,7 @@ header {
 header h1 {
  font-family: 'Prata', serif;
  color: #FFFFFF;
+ opacity: 0.9;
  font-size: 70px;
 }
 
@@ -63,6 +64,12 @@ input,
  font-family: 'Prata', serif;
  list-style: none;
  padding: 20px;
+ display: flex;
+ flex-direction: column;
+}
+
+button.city {
+ margin: 5px;
 }
 
 button.city:hover {
@@ -80,7 +87,7 @@ button.city:hover {
 .weather-info {
  display: flex;
  flex-direction: column;
- height: 40%;
+ height: 30%;
  margin: 20px;
  background-color: white;
  opacity: 0.8;
@@ -91,6 +98,18 @@ button.city:hover {
 .weather {
  padding: 10px;
  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.favorable span {
+ background-color: #70be8e;
+}
+
+.moderate span{
+ background-color: #fdbb2d;
+}
+
+.severe span{
+ background-color: #fd1d1d;
 }
 
 .weather-imgs {
