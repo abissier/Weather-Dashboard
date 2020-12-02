@@ -1,4 +1,4 @@
-var queryURLBase = "http://api.openweathermap.org/data/2.5/forecast?q=";
+var queryURLBase = "https://api.openweathermap.org/data/2.5/forecast?q=";
 var imperialUnits = "&units=imperial";
 var apiKey = "&appid=086828ce404d02fbf057835f64951922";
 var lat = "";
@@ -38,7 +38,7 @@ function runQuery(queryURL) {
         //delete extra content from the date gathered from api
         var weatherDataDate = weatherData.list[0].dt_txt.toString().slice(0, 10);
         //save city weather icon in variable to make easier to append in next step
-        var cityWeatherIcon = "<img src=http://openweathermap.org/img/w/" + weatherData.list[0].weather[0].icon + ".png>";
+        var cityWeatherIcon = "<img src=https://openweathermap.org/img/w/" + weatherData.list[0].weather[0].icon + ".png>";
 
         //append wanted data from api to html
         $(".weather").append("<h2>" + weatherData.city.name + " " + weatherDataDate + cityWeatherIcon + "</h2>");
@@ -56,7 +56,7 @@ function runQuery(queryURL) {
             //delete extra content from the date gathered from api
             var littleWeatherDate = weatherData.list[i].dt_txt.toString().slice(0, 10);
             //save city weather icon in variable to make easier to append in next step
-            var weatherIcon = "http://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png";
+            var weatherIcon = "https://openweathermap.org/img/w/" + weatherData.list[i].weather[0].icon + ".png";
 
             //append wanted data from api to html
             $("#slot-" + i).append("<h6>" + littleWeatherDate + "</h6>");
@@ -73,7 +73,7 @@ function runQuery(queryURL) {
     }).then(function (weatherUV) {
 
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + apiKey,
+            url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + apiKey,
             method: "GET"
 
         }).done(function (weatherUV) {
