@@ -6,20 +6,18 @@ var lon = "";
 var userCity = "";
 var btnCity = "";
 var previousSearch = [];
-var x = "";
+var storedCity = "";
 
 
 getLastSearch();
 
 function getLastSearch() {
-   x = localStorage.getItem("city");
+    storedCity = localStorage.getItem("city");
 }
 
-if (typeof x === "string") {
+if (storedCity) {
 
-    var oldCity = localStorage.getItem("city");
-
-    var newUrl = queryURLBase + oldCity + imperialUnits + apiKey;
+    var newUrl = queryURLBase + storedCity + imperialUnits + apiKey;
 
     runQuery(newUrl);
 }
