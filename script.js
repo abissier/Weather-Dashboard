@@ -6,6 +6,24 @@ var lon = "";
 var userCity = "";
 var btnCity = "";
 var previousSearch = [];
+var x = "";
+
+
+getLastSearch();
+
+function getLastSearch() {
+   x = localStorage.getItem("city");
+}
+
+if (typeof x === "string") {
+
+    var oldCity = localStorage.getItem("city");
+
+    var newUrl = queryURLBase + oldCity + imperialUnits + apiKey;
+
+    runQuery(newUrl);
+}
+
 
 //ajax request to get info
 function runQuery(queryURL) {
@@ -100,6 +118,7 @@ $('#search-button').on("click", function (event) {
 
     var newUrl = queryURLBase + userCity + imperialUnits + apiKey;
 
+    localStorage.setItem("city", userCity);
     //run query w new url
     runQuery(newUrl);
     return false;
@@ -110,6 +129,8 @@ $(".city-list").on("click", function (event) {
     btnCity = event.target.innerText;
 
     var newUrl = queryURLBase + btnCity + imperialUnits + apiKey;
+
+    localStorage.setItem("city", btnCity);
 
     // run query w new url
     runQuery(newUrl);
