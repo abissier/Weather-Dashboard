@@ -5,9 +5,8 @@ retrieving data from another application's API.
 ```
 
 ### Deployed Link
-```
-link: https://abissier.github.io/Weather-Dashboard/ 
-```
+https://abissier.github.io/Weather-Dashboard/ 
+
 
 ### Screen Capture
 <br>
