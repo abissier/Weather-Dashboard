@@ -70,11 +70,14 @@ input,
 
 button.city {
  margin: 5px;
+ border-radius: 5px;
+ background: none;
+ border: 1px solid #FFBF69;
 }
 
 button.city:hover {
  transition: all .2s ease-in-out;
- transform: scale(1.2);
+ transform: scale(1.1);
 }
 
 .weather-display {
@@ -143,5 +146,25 @@ button.city:hover {
 .weatherslot:hover{
  transition: all .2s ease-in-out;
  transform: scale(1.1);
+}
+
+.wrapper .search-input {
+    background: white;
+}
+.autocom-box li {
+    display: none;
+    list-style: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+    padding: 8px 12px;
+}
+
+.autocom-box li:hover {
+    background:  rgba(34,193,195,1);
+}
+
+.search-input.active .autocom-box li {
+    display: block;
 }
 

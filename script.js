@@ -1,3 +1,7 @@
+const searchWrapper = document.querySelector(".search-input");
+const inputBox = document.querySelector("input");
+const suggBox = document.querySelector(".autocom-box");
+
 var queryURLBase = "https://api.openweathermap.org/data/2.5/forecast?q=";
 var imperialUnits = "&units=imperial";
 var apiKey = "&appid=086828ce404d02fbf057835f64951922";
@@ -8,6 +12,45 @@ var btnCity = "";
 var previousSearch = [];
 var storedCity = "";
 
+//auto fill content from CodingNepal YouTube 
+inputBox.onkeyup = (e) => {
+    let userData = e.target.value;
+    let emptyArray = [];
+    if (userData) {
+        emptyArray = suggestions.filter((data) => {
+            //filter array value
+            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+        });
+        emptyArray = emptyArray.map((data) => {
+            return data = '<li>' + data + '</li>';
+        });
+        searchWrapper.classList.add("active")
+        showSuggestions(emptyArray)
+        let allList = document.querySelectorAll("li");
+        for (var i = 0; i < allList.length; i++) {
+            allList[i].setAttribute("onclick", "select(this)");
+        }
+    } else {
+        searchWrapper.classList.remove("active");
+    }
+}
+
+function select(element) {
+    let selectUserData = element.textContent;
+    inputBox.value = selectUserData;
+    searchWrapper.classList.remove("active");
+}
+
+function showSuggestions(list) {
+    let listData;
+    if (!list.length) {
+        userValue = inputBox.value;
+        listData = '<li>' + userValue + '</li>';
+    } else {
+        listData = list.join('')
+    }
+    suggBox.innerHTML = listData;
+}
 
 getLastSearch();
 

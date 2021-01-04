@@ -27,13 +27,17 @@
     <section>
         <div class="search-field">
             <div class="search-bar">
-                <form>
                     <label for="city">Search for a City:</label>
                     <br>
-                    <input type="text" id="city" name="city">
-                    <button type="button" id="search-button" class="btn btn-outline-info"><i class="fas fa-search"></i>
-                    </button>
-                </form>
+                    <div class="wrapper">
+                        <div class="search-input">
+                            <input type="text" id="city" name="city" placeholder="City Name">
+                            <button type="button" id="search-button" class="btn btn-outline-info"><i
+                                    class="fas fa-search"></i></button>
+                            <div class="autocom-box">
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="city-list"></div>
         </div>
@@ -47,6 +51,7 @@
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="suggestions.js"></script>
     <script src="script.js"></script>
 </body>
 
