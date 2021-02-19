@@ -3,6 +3,8 @@
 This Weather Dashboard allows users to search for the weather outlook of multiple cities by 
 retrieving data from another application's API. 
 ```
+### Technologies Used
+Javascript, HTML, CSS, and Open Weather API. 
 
 ### Deployed Link
 https://abissier.github.io/Weather-Dashboard/ 
