@@ -22,7 +22,7 @@ https://abissier.github.io/Weather-Dashboard/
 
 ### Screen Capture
 <br>
-<a href='https://postimg.cc/sQQwVMBd' target='_blank'><img src='https://i.postimg.cc/sQQwVMBd/screencapture-file-C-Users-17046-Weather-Dashboard-index-html-2020-11-29-18-57-21.png' border='0' alt='screencapture-file-C-Users-17046-Weather-Dashboard-index-html-2020-11-29-18-57-21'/></a>
+<a href='https://postimg.cc/sQQwVMBd' target='_blank'><img src='https://i.postimg.cc/sQQwVMBd/screencapture-file-C-Users-17046-Weather-Dashboard-index-html-2020-11-29-18-57-21.png' border='0' alt='screencapture-file-C-Users-17046-Weather-Dashboard-index-html-2020-11-29-18-57-21'/></a><br>
 <a href="https://ibb.co/w0YkC9x"><img src="https://i.ibb.co/2n59PDf/weatherdb.png" alt="weatherdb" border="0"></a>
 
 ### Contact 
