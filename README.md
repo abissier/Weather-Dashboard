@@ -9,10 +9,7 @@
 * [Contact](#contact)
 
 ### Description 
-```
-This Weather Dashboard allows users to search for the weather outlook of multiple cities by 
-retrieving data from another application's API. 
-```
+A Weather Dashboard that allows users to search for a city's 5-day weather outlook. 
 
 ### Technologies Used
 Javascript, HTML, CSS, and Open Weather API. 
