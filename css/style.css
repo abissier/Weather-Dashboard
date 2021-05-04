@@ -1,3 +1,8 @@
+body {
+	background: rgb(34, 193, 195);
+	height: auto;
+}
+
 header {
 	display: flex;
 	justify-content: center;
@@ -15,16 +20,10 @@ header h1 {
 	font-size: 8vw;
 }
 
-body {
-	background: rgb(34, 193, 195);
-	background: linear-gradient(0deg, rgba(34, 193, 195, 1) 50%, rgba(253, 187, 45, 1) 100%);
-}
-
 section {
 	display: flex;
 	flex-wrap: wrap;
-	width: 100%;
-	height: auto;
+	width: auto;
 	flex-direction: row;
 	margin-left: 10px;
 }
@@ -44,7 +43,6 @@ section {
 
 .search-bar {
 	margin: 0px auto;
-	/* padding: 20px; */
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -157,7 +155,7 @@ button.city:hover {
 .autocom-box li {
 	display: none;
 	list-style: none;
-	width: 100%;
+	/* width: 100%; */
 	cursor: default;
 	border-radius: 3px;
 	padding: 8px 12px;
