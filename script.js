@@ -51,7 +51,7 @@ function showSuggestions(list) {
 	}
 	suggBox.innerHTML = listData;
 }
-
+// grab last search from local storage function
 getLastSearch();
 
 function getLastSearch() {
@@ -64,7 +64,7 @@ if (storedCity) {
 	runQuery(newUrl);
 }
 
-//ajax request to get info
+//ajax request to get weather info
 function runQuery(queryURL) {
 	$('.weather-info').empty();
 	$('.weather-imgs-content').empty();
@@ -136,7 +136,7 @@ function runQuery(queryURL) {
 				$('.weather').append("<h5 class='uv'>" + 'UV Index: <span>' + weatherUV.value + '</span></h5>');
 
 				var uvIndex = parseInt(weatherUV.value, 10);
-
+				// add background color to uv index result
 				if (uvIndex <= 2) {
 					$('.uv').addClass('favorable');
 				} else if (uvIndex >= 3 && uvIndex <= 5) {
