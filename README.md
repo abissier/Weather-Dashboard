@@ -12,15 +12,14 @@
 A Weather Dashboard that allows users to search for a city's 5-day weather outlook. 
 
 ### Technologies Used
-Javascript, HTML, CSS, and Open Weather API. 
+HTML, CSS, Javascript, jQuery, and Open Weather API. 
 
 ### Deployed Link
 https://abissier.github.io/Weather-Dashboard/ 
 
 ### Screen Capture
 <br>
-<a href='https://postimg.cc/sQQwVMBd' target='_blank'><img src='https://i.postimg.cc/sQQwVMBd/screencapture-file-C-Users-17046-Weather-Dashboard-index-html-2020-11-29-18-57-21.png' border='0' alt='screencapture-file-C-Users-17046-Weather-Dashboard-index-html-2020-11-29-18-57-21'/></a><br>
-<a href="https://ibb.co/w0YkC9x"><img src="https://i.ibb.co/2n59PDf/weatherdb.png" alt="weatherdb" border="0"></a>
+<a href="https://ibb.co/w4PTGwx"><img src="https://i.ibb.co/x6By9fR/screencapture-file-C-Users-17046-Weather-Dashboard-index-html-2021-05-04-09-21-04.png" alt="screencapture-file-C-Users-17046-Weather-Dashboard-index-html-2021-05-04-09-21-04" border="0"></a>
 
 ### Contact 
 Questions? 
