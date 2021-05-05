@@ -12,46 +12,7 @@ var btnCity = '';
 var previousSearch = [];
 var storedCity = '';
 
-//auto fill content from CodingNepal YouTube
-inputBox.onkeyup = (e) => {
-	let userData = e.target.value;
-	let emptyArray = [];
-	if (userData) {
-		emptyArray = suggestions.filter((data) => {
-			//filter array value
-			return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
-		});
-		emptyArray = emptyArray.map((data) => {
-			return (data = '<li>' + data + '</li>');
-		});
-		searchWrapper.classList.add('active');
-		showSuggestions(emptyArray);
-		let allList = document.querySelectorAll('li');
-		for (var i = 0; i < allList.length; i++) {
-			allList[i].setAttribute('onclick', 'select(this)');
-		}
-	} else {
-		searchWrapper.classList.remove('active');
-	}
-};
-
-function select(element) {
-	let selectUserData = element.textContent;
-	inputBox.value = selectUserData;
-	searchWrapper.classList.remove('active');
-}
-
-function showSuggestions(list) {
-	let listData;
-	if (!list.length) {
-		userValue = inputBox.value;
-		listData = '<li>' + userValue + '</li>';
-	} else {
-		listData = list.join('');
-	}
-	suggBox.innerHTML = listData;
-}
-// grab last search from local storage function
+//--------------------------- grab last search from local storage function
 getLastSearch();
 
 function getLastSearch() {
@@ -64,7 +25,7 @@ if (storedCity) {
 	runQuery(newUrl);
 }
 
-//ajax request to get weather info
+//-----------------------------------ajax request to get weather info
 function runQuery(queryURL) {
 	$('.weather-info').empty();
 	$('.weather-imgs-content').empty();
@@ -148,7 +109,7 @@ function runQuery(queryURL) {
 		});
 }
 
-//onclick event for search button
+//------------------------------------onclick event for search button
 $('#search-button').on('click', function(event) {
 	userCity = $('#city').val().trim();
 
@@ -160,7 +121,7 @@ $('#search-button').on('click', function(event) {
 	return false;
 });
 
-//onclick event for previous city search
+//-------------------------------------onclick event for previous city search
 $('.city-list').on('click', function(event) {
 	btnCity = event.target.innerText;
 
@@ -171,4 +132,9 @@ $('.city-list').on('click', function(event) {
 	// run query w new url
 	runQuery(newUrl);
 	return false;
+});
+
+//--------------------------------------------onclick to scroll to top of page
+$('h1').on('click', function() {
+	$(window).scrollTop(0);
 });
